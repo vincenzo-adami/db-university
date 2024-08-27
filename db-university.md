@@ -1,33 +1,43 @@
-# table: departments
+# Univertisty
+
+## table: departments
 - id BIGINTUNSIGNED PK AUTO UNIQUE NOTNULL
 - name VARCHAR(80) NOTNULL
 
-# table: degree_courses
+## table: degrees
 - id BIGINTUNSIGNED PK AUTO UNIQUE NOTNULL
 - name VARCHAR(80) NOTNULL
 - id_department FK BIGINTUNSIGNED NOTNULL
-<!-- many to many con courses -->
 
-# table: courses
+## table: courses
 - id BIGINTUNSIGNED PK AUTO UNIQUE NOTNULL
 - name VARCHAR(80) NOTNULL
 - teacher_id BIGINTUNSIGNED FK NOTNULL
-<!-- many to many con teachers -->
 
-# table: teachers
+## table (pivot): course_teacher
+- id BIGINTUNSIGNED PK AUTO UNIQUE NOTNULL
+- course_id FK BIGINTUNSIGNED NOTNULL
+- tacher_id FK BIGINTUNSIGNED NOTNULL
+
+## table: teachers
 - id BIGINTUNSIGNED PK AUTO UNIQUE NOTNULL
 - name VARCHAR(40) NULL
 - surname VARCAHR(40) NOTNULL
 
-# table: exams
+## table: exams
 - id BIGINTUNSIGNED PK AUTO UNIQUE NOTNULL
 - name VARCHAR(80) NOTNULL
 - id_cours BIGINTUNSIGNED FK NOTNULL
 - data DATATIME NOTNULL
 
-# table: students
+## table(pivot) : exam_student
+- id BIGINTUNSIGNED PK AUTO UNIQUE NOTNULL
+- exam_id FK BIGINTUNSIGNED NOTNULL
+- student_id FK BIGINTUNSIGNED NOTNULL
+- vote TINYINTUNSIGNED NOTNULL
+
+## table: students
 - id BIGINTUNSIGNED PK AUTO UNIQUE NOTNULL
 - name VARCHAR(40) NULL
 - surname VARCAHR(40) NOTNULL
 - id_degree_cours FK BIGINTUNSIGNED NOTNULL
-<!-- many to many con exams -->
